@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem 1</title>
+    <style>
+        .main{
+            flex-wrap: wrap;
+            display: flex;
+        }
+        .box{
+            flex-grow: 0.25;
+            border: 1px solid black;
+        }
+
+        @media (max-width: 720px) {
+            .box {
+                width: calc(50% - 2px)
+            }
+        }
+
+        @media (max-width: 360px) {
+            .box {
+                width: calc(100% - 2px)
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="box">
+            box 1
+        </div>
+        <div class="box">
+            box 2
+        </div>
+        <div class="box">
+            box 3
+        </div>
+        <div class="box">
+            box 4
+        </div>
+    </div>
+</body>
+</html>

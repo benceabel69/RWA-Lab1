@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem 3</title>
+</head>
+<body>
+    <div class="main">
+        <div class="addNote" style="display:block;">
+            <input type="text" placeholder="New Note " id="newNote">
+            <button type="button" onclick="getNote();">Submit Note</button>
+        </div>
+        <div class="editNote" style="display:none;">
+            <input id="editedNote" type="text" placeholder="Edit Note: " style="width:35%" /><button onclick="submitNote()">Submit Edited Note</button>
+        </div>
+        <div class="displayNote" style="display:block;">
+            <textarea disabled style="width:200px; height: 200px;" id="display"></textarea>
+        </div>
+    </div>
+</body>
+<script>
+    var editnote = document.getElementById("editedNote");
+    var newNote = document.getElementById("newNote");
+    var display = document.getElementById("display");
+    let notes = [];
+
+    function getNote() {  // A method is used to get input value
+      let note = document.getElementById("newNote").value;
+      notes[notes.length] = note;
+    //   alert(notes[0]); 
+      for(let i = 0; i < notes.length; i++) {
+        let display = document.getElementById("display");
+        var enteredNotes = " ";
+        enteredNotes+= notes[i] ;
+        display.innerHTML= enteredNotes;
+      }
+    }
+
+    function submitNote(){
+
+    }
+    
+</script>
+</html>
+
+
+
+<script>
+    
+  </script>
