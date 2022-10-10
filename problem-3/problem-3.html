@@ -4,6 +4,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Problem 3</title>
+    <style>
+        .tr{
+            margin-top: 10px;
+            background: #3cf6ee80;
+            height: 100px;
+            width: 500px;
+        }
+        .btn{
+            height:50px;
+            margin-top: 25px;
+            border: none;
+            border-radius: 10px;
+            background:white;
+        }
+    </style>
 </head>
 <body>
     <div class="main">
@@ -15,7 +30,9 @@
             <input id="editedNote" type="text" placeholder="Edit Note: " style="width:35%" /><button onclick="submitNote()">Submit Edited Note</button>
         </div>
         <div class="displayNote" style="display:block;">
-            <textarea disabled style="width:200px; height: 200px;" id="display"></textarea>
+            <table id="noteTable">
+
+            </table>
         </div>
     </div>
 </body>
@@ -24,23 +41,53 @@
     var newNote = document.getElementById("newNote");
     var display = document.getElementById("display");
     let notes = [];
-
+    let counter = 0;
     function getNote() {  // A method is used to get input value
       let note = document.getElementById("newNote").value;
       notes[notes.length] = note;
-    //   alert(notes[0]); 
-      for(let i = 0; i < notes.length; i++) {
-        let display = document.getElementById("display");
-        var enteredNotes = " ";
-        enteredNotes+= notes[i] ;
-        display.innerHTML= enteredNotes;
-      }
-    }
-
-    function submitNote(){
-
-    }
     
+      counter++;
+
+    let display = document.getElementById("noteTable");
+    var enteredNotes = " ";
+    enteredNotes+= notes[notes.length -1] ;
+
+    var tr = document.createElement('tr');
+    tr.setAttribute('id', counter);
+    if(counter%2 == 0){
+        tr.style.backgroundColor = "red";
+    }else{
+        tr.style.backgroundColor = "green";
+    }
+    var th = document.createElement('textarea');
+    var BTNth = document.createElement('input');
+    BTNth.setAttribute('type', 'button');
+    BTNth.setAttribute('value', 'Delete');
+    BTNth.setAttribute('onclick', 'deleteRow(this)');
+    BTNth.setAttribute('class', 'btn');
+    var EDITth = document.createElement('input');
+    EDITth.setAttribute('type', 'button');
+    EDITth.setAttribute('value', 'Edit');
+    EDITth.setAttribute('onclick', 'EditRow(this)');
+    EDITth.setAttribute('class', 'btn');
+    th.innerHTML = enteredNotes;
+    tr.appendChild(th);
+    tr.appendChild(BTNth);
+    //tr.appendChild(EDITth);
+    tr.setAttribute('class', 'tr');
+    display.appendChild(tr);
+ 
+    }
+
+    function deleteRow(r){
+        let empTab = document.getElementById('noteTable');
+        empTab.deleteRow(r.parentNode.parentNode.rowIndex);
+    }
+    function EditRow(r){
+        let empTab = document.getElementById('noteTable');
+        empTab.editRow(r.innerHTML="bence");
+    }
+
 </script>
 </html>
 
